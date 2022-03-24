@@ -11,7 +11,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "node src",
+    "start": "tsc && node dist/app.js",
     "dev": "nodemon --config nodemon.json src/index.ts"
   },
   "keywords": [],
