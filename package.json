@@ -11,8 +11,10 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "npm i && tsc && node dist",
-    "dev": "nodemon --config nodemon.json src/index.ts"
+    "start": "node dist",
+    "dev": "nodemon --config nodemon.json src/index.ts",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc"
   },
   "keywords": [],
   "author": "",
