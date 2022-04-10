@@ -1,8 +1,11 @@
+import { Request, Response } from "express";
 import Customer from "../models/customer.model";
 
-export const getCustomers = async (req, res) => {
+export const getCustomers = async (req: Request, res: Response) => {
   try {
-    const customers = await Customer.find();
+    const customers = await Customer.find({
+      user_id: "62526d8d731dc7e25bfb5c65",
+    });
     res.json(customers);
   } catch (error) {
     console.log(error.message);
@@ -10,10 +13,13 @@ export const getCustomers = async (req, res) => {
   }
 };
 
-export const createCustomer = async (req, res) => {
+export const createCustomer = async (req: Request, res: Response) => {
   try {
     const data = req.body;
-    const newCustomer = await Customer.create(data);
+    const newCustomer = await Customer.create({
+      ...data,
+      user_id: "62526d8d731dc7e25bfb5c65",
+    });
     res.json(newCustomer);
   } catch (error) {
     console.log(error.message);
@@ -21,7 +27,7 @@ export const createCustomer = async (req, res) => {
   }
 };
 
-export const getCustomer = async (req, res) => {
+export const getCustomer = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const customer = await Customer.findById(id);
@@ -32,7 +38,7 @@ export const getCustomer = async (req, res) => {
   }
 };
 
-export const updateCustomer = async (req, res) => {
+export const updateCustomer = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const updateCustomer = await Customer.findByIdAndUpdate(id, req.body, {
@@ -45,7 +51,7 @@ export const updateCustomer = async (req, res) => {
   }
 };
 
-export const deleteCustomer = async (req, res) => {
+export const deleteCustomer = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const deleteCustomer = await Customer.findByIdAndDelete(id);
