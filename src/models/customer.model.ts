@@ -4,9 +4,11 @@ const CustomerSchema = new Schema(
   {
     user_id: String,
     name: String,
+    date_of_birth: String,
+    gender: String,
     email: String,
-    age: Number,
     phone_number: String,
+    contact_time: String,
     city: String,
     address: String,
   },
